@@ -18,7 +18,7 @@ struct ContentView: View {
             	NavigationLink(destination: HomePageView()) {
                     Text("Enter")
                         .font(.system(size: 30))
-                        .background(Color: .white)
+                        .background(.white)
                         .cornerRadius(25)
                 }
             }
