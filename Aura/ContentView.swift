@@ -16,6 +16,7 @@ struct ContentView: View {
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color(red: 69/255.0, green: 54/255.0, blue: 89/255.0))
+        	Button("Enter")
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity) // Make VStack fill available space
