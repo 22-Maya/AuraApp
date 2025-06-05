@@ -14,7 +14,7 @@ struct ContentView: View {
                 Text("Welcome \nTo Aura")
                     .font(.system(size: 60, weight: .semibold, design: .serif))
                     .multilineTextAlignment(.center)
-                    .foregroundColor(Color(red: 69/255.0, green: 54/255.0, blue: 89/255.0))
+                    .foregroundStyle(Color(red: 69/255.0, green: 54/255.0, blue: 89/255.0))
             	NavigationLink(destination: HomePageView()) {
                     Text("Enter")
                         .font(.system(size: 30))
