@@ -13,5 +13,6 @@ struct AuraApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: JournalEntry.self)
     }
 }
