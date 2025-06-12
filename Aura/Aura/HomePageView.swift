@@ -78,5 +78,4 @@ struct HomePageView: View {
 
 #Preview {
     HomePageView()
-        .modelContainer(for: JournalEntry.self)
 }

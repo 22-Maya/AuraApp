@@ -9,8 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-
-final class JournalEntry {
+class JournalEntry {
     var id: UUID
     var text: String
     var date: Date
@@ -22,5 +21,11 @@ final class JournalEntry {
         self.date = date
         self.sentimentScore = sentimentScore
     }
-
+    
+    var formattedDate: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
 }

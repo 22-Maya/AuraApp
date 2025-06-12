@@ -25,7 +25,7 @@ struct EntryView: View {
             
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
-                    Text(entry.sentimentScore)
+                    Text(String(format: "Mood: %.1f", entry.sentimentScore))
                         .font(.system(.title3, design: .serif))
                     Spacer()
                     Text(entry.formattedDate)
@@ -53,5 +53,5 @@ struct EntryView: View {
 }
 
 #Preview {
-    EntryView(entry: JournalEntry)
+    EntryView(entry: JournalEntry(text: "Today was a productive day. I finished all my tasks and felt accomplished.", date: Date(), sentimentScore: 1.0))
 }
