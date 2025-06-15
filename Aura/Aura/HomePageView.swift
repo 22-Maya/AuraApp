@@ -16,17 +16,17 @@ struct HomePageView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(entries) { entry in
-                    NavigationLink {
+                ForEach(entries) {
+                    entry in NavigationLink {
                         EntryView(entry: entry)
-                    } label: {
+                    }
+                    label: {
                         VStack(alignment: .leading, spacing: 8) {
                             Text(entry.formattedDate)
                                 .font(.system(.caption, design: .serif))
                                 .foregroundStyle(.secondary)
-                            
-                            Text(entry.text.prefix(50) + (entry.text.count > 50 ? "..." : ""))
-                                .lineLimit(2)
+            
+                            Text(entry.date, format: Date.FormatStyle(date: .numeric, time: .shortened))
                                 .font(.system(.body, design: .serif))
                             
                             HStack {

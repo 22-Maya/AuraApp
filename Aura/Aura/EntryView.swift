@@ -53,5 +53,5 @@ struct EntryView: View {
 }
 
 #Preview {
-    EntryView(entry: JournalEntry(text: "Today was a productive day. I finished all my tasks and felt accomplished.", date: Date(), sentimentScore: 1.0))
+    EntryView(entry: JournalEntry(title: "Amazing Day", text: "Today was a productive day. I finished all my tasks and felt accomplished.", date: Date(), sentimentScore: 1.0))
 }
