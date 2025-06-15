@@ -10,38 +10,54 @@ import SwiftData
 
 struct HomePageView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \JournalEntry.date, order: .reverse) private var entries: [JournalEntry]
+    @Query(sort: \JournalEntry.date, order: .reverse)
+    private var entries: [JournalEntry]
     @State private var isShowingNewEntry = false
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(entries) {
-                    entry in NavigationLink {
-                        EntryView(entry: entry)
-                    }
-                    label: {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(entry.formattedDate)
-                                .font(.system(.caption, design: .serif))
-                                .foregroundStyle(.secondary)
-            
-                            Text(entry.date, format: Date.FormatStyle(date: .numeric, time: .shortened))
-                                .font(.system(.body, design: .serif))
-                            
-                            HStack {
-                                Text(entry.sentiment)
-                                    .font(.system(.subheadline, design: .serif))
-                                Spacer()
-                            }
+            ZStack {
+                LinearGradient(
+                    gradient: Gradient(colors: [
+                        Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0),
+                        Color(red: 141/255.0, green: 140/255.0, blue: 207/255.0)
+                    ]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea()
+                
+                List {
+                    ForEach(entries) { entry in
+                        NavigationLink {
+                            EntryView(entry: entry)
+                        } label: {
+                            JournalEntryRow(entry: entry)
                         }
-                        .padding(.vertical, 8)
+                        .listRowBackground(Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0))
+                        .listRowSeparatorTint(Color(red: 69/255.0, green: 54/255.0, blue: 89/255.0))
+                        .onAppear {
+                            print("Displaying entry:", entry.title, entry.date)
+                        }
+                    }
+                    .onDelete(perform: deleteEntries)
+                }
+                .scrollContentBackground(.hidden)
+                .overlay {
+                    if entries.isEmpty {
+                        ContentUnavailableView(
+                            "No Entries Yet",
+                            systemImage: "book.closed.fill",
+                            description: Text("Tap + to create your first journal entry")
+                        )
                     }
                 }
-                .onDelete(perform: deleteEntries)
-                .listRowBackground(Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0))
             }
-            .navigationTitle("Aura Journal")
+            .navigationTitle("Your Aura Journal")
+            .onAppear {
+                print("Total entries:", entries.count)
+                print("First entry date:", entries.first?.date ?? "nil")
+            }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
@@ -55,27 +71,30 @@ struct HomePageView: View {
             .sheet(isPresented: $isShowingNewEntry) {
                 NewEntryView()
             }
-            .background(
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0),
-                        Color(red: 141/255.0, green: 140/255.0, blue: 207/255.0)
-                    ]),
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .ignoresSafeArea()
-            )
         }
     }
     
     private func deleteEntries(offsets: IndexSet) {
-        for index in offsets {
-            modelContext.delete(entries[index])
+        withAnimation {
+            offsets.forEach { index in
+                modelContext.delete(entries[index])
+            }
         }
     }
 }
 
 #Preview {
-    HomePageView()
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: JournalEntry.self, configurations: config)
+    
+    let sampleEntry = JournalEntry(
+        title: "My First Entry",
+        text: "Today was a wonderful day!",
+        date: Date(),
+        sentimentScore: 0.8
+    )
+    container.mainContext.insert(sampleEntry)
+    
+    return HomePageView()
+        .modelContainer(container)
 }

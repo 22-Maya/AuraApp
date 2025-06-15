@@ -31,7 +31,7 @@ struct ContentView: View {
                 )
                 .ignoresSafeArea()
                 
-                NavigationLink(destination: HomePageView()) {
+                NavigationLink(destination: HomePageView().navigationBarBackButtonHidden(true)) {
                     Text("Enter")
                         .padding()
                         .font(.system(size: 40, design: .serif))

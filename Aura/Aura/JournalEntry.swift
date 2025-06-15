@@ -22,6 +22,7 @@ class JournalEntry {
         self.text = text
         self.date = date
         self.sentimentScore = sentimentScore
+        print("Initializing new entry:", title, date)
     }
     
     var formattedDate: String {

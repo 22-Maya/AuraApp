@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct EntryView: View {
     let entry: JournalEntry
     
     var body: some View {
         ZStack {
-            // Your gradient background
             LinearGradient(
                 gradient: Gradient(colors: [
                     Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0),
