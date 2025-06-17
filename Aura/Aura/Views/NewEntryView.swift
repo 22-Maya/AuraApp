@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct NewEntryView: View {
+    @Query private var entries: [JournalEntry]
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
@@ -17,7 +18,7 @@ struct NewEntryView: View {
     @State private var date: Date = Date()
     @State private var showDatePicker = false
     @State private var sentimentScore: Double?
-    private let scorer = Scorer.shared
+    private let scorer = Scorer()
     
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color(red: 49/255.0, green: 39/255.0, blue: 63/255.0))]
@@ -84,24 +85,24 @@ struct NewEntryView: View {
         }
     }
     
-    private func analyzeSentiment() {
-        sentimentScore = text.isEmpty ? nil : scorer.score(text)
-    }
-    
     private func saveEntry() {
-        let score = sentimentScore ?? 0.0
+        let score = scorer.score(text)
         let newEntry = JournalEntry(
             title: title,
             text: text,
             date: date,
-            sentimentScore: score
+            sentimentScore: score.isFinite ? score : 0.0
         )
+        
         modelContext.insert(newEntry)
         dismiss()
     }
 }
 
 #Preview {
-    NewEntryView()
-        .modelContainer(for: JournalEntry.self)
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: JournalEntry.self, configurations: config)
+    
+    return NewEntryView()
+        .modelContainer(container)
 }

@@ -25,8 +25,9 @@ struct EntryView: View {
             
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
-                    Text(String(format: "Mood: %.1f", entry.sentimentScore))
+                    Text(entry.sentimentIcon)
                         .font(.system(.title3, design: .serif))
+                        .foregroundStyle(entry.sentimentColor)
                     Spacer()
                     Text(entry.formattedDate)
                         .font(.system(.subheadline, design: .serif))
