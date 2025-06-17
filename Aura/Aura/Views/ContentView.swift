@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack(alignment: .bottom) {
                 VStack {
                     Text("Welcome \nTo Aura")
@@ -31,7 +31,7 @@ struct ContentView: View {
                 )
                 .ignoresSafeArea()
                 
-                NavigationLink(destination: HomePageView()) {
+                NavigationLink(destination: HomePageView().navigationBarBackButtonHidden(true)) {
                     Text("Enter")
                         .padding()
                         .font(.system(size: 40, design: .serif))

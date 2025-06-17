@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct AuraApp: App {
@@ -13,5 +14,6 @@ struct AuraApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: JournalEntry.self)
     }
 }
