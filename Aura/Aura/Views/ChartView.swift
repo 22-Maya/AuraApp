@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct ChartView: View {
-    var entries: [JournalEntry]
+    let entries: [JournalEntry]
         
     init(entries: [JournalEntry]) {
         self.entries = entries
@@ -18,7 +18,7 @@ struct ChartView: View {
     var body: some View {
         Chart(entries) { entry in
             SectorMark(angle: .value("Type", 1))
-                .foregroundStyle(by: .value("Sentiment", entry.sentimentScore))
+                .foregroundStyle(by: .value("sentiment", entry.sentiment))
         }
         .chartForegroundStyleScale([
             JournalEntry.Sentiment.positive.rawValue: JournalEntry.Sentiment.positive.sentimentColor,
@@ -31,6 +31,6 @@ struct ChartView: View {
     }
 }
 
-#Preview {
-    HomePageView()
-}
+/*#Preview {
+    ChartView()
+}*/
