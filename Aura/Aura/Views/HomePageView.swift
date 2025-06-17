@@ -14,6 +14,10 @@ struct HomePageView: View {
     @Query(sort: \JournalEntry.date, order: .reverse) private var entries: [JournalEntry]
     @State private var isShowingNewEntry = false
     
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color(red: 49/255.0, green: 39/255.0, blue: 63/255.0))]
+    }
+    
     var body: some View {
         TabView {
             // Journal Tab

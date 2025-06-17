@@ -40,7 +40,7 @@ class JournalEntry {
             case .positive:
                     return "Positive 😊"
                 default:
-                    return "Neutral 😐"
+                    return "Balanced 😐"
             }
         }
         
