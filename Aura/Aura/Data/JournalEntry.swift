@@ -18,7 +18,7 @@ class JournalEntry {
     var date: Date = Date()
     var sentimentScore: Double = 0.0
     
-    enum Sentiment: String, Plottable {
+    enum Sentiment: String, Plottable, CaseIterable {
         case positive
         case negative
         case neutral

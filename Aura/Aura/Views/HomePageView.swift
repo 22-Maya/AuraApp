@@ -15,19 +15,20 @@ struct HomePageView: View {
     @State private var isShowingNewEntry = false
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0),
-                        Color(red: 141/255.0, green: 140/255.0, blue: 207/255.0)
-                    ]),
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .ignoresSafeArea()
-                
-                TabView {
+        TabView {
+            // Journal Tab
+            NavigationStack {
+                ZStack {
+                    LinearGradient(
+                        gradient: Gradient(colors: [
+                            Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0),
+                            Color(red: 141/255.0, green: 140/255.0, blue: 207/255.0)
+                        ]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .ignoresSafeArea()
+                    
                     List {
                         ForEach(entries) { entry in
                             NavigationLink {
@@ -50,41 +51,70 @@ struct HomePageView: View {
                             )
                         }
                     }
-                    .tabItem {
-                        Label("Journal", systemImage: "book.fill")
+                }
+                .navigationTitle("Your Aura Journal")
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button {
+                            isShowingNewEntry = true
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundColor(Color(red: 69/255.0, green: 54/255.0, blue: 89/255.0))
+                        }
                     }
-                    .tag(0)
+                }
+                .sheet(isPresented: $isShowingNewEntry) {
+                    NewEntryView()
+                }
+            }
+            .tabItem {
+                Label("Journal", systemImage: "book.fill")
+            }
+            .tag(0)
+            
+            // Insights Tab
+            NavigationStack {
+                ZStack {
+                    LinearGradient(
+                        gradient: Gradient(colors: [
+                            Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0),
+                            Color(red: 141/255.0, green: 140/255.0, blue: 207/255.0)
+                        ]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .ignoresSafeArea()
                     
-                    // Insights Tab
                     ChartView(entries: entries)
-                        .tabItem {
-                            Label("Insights", systemImage: "chart.pie.fill")
-                        }
-                        .tag(1)
+                }
+            }
+            .tabItem {
+                Label("Insights", systemImage: "chart.pie.fill")
+            }
+            .tag(1)
+            
+            // Tips Tab
+            NavigationStack {
+                ZStack {
+                    LinearGradient(
+                        gradient: Gradient(colors: [
+                            Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0),
+                            Color(red: 141/255.0, green: 140/255.0, blue: 207/255.0)
+                        ]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .ignoresSafeArea()
                     
-                    // Tips Tab
                     TipsView()
-                        .tabItem {
-                            Label("Tips", systemImage: "lightbulb.fill")
-                        }
-                        .tag(2)
                 }
             }
-            .navigationTitle("Your Aura Journal")
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button {
-                        isShowingNewEntry = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(Color(red: 69/255.0, green: 54/255.0, blue: 89/255.0))
-                    }
-                }
+            .tabItem {
+                Label("Tips", systemImage: "lightbulb.fill")
             }
-            .sheet(isPresented: $isShowingNewEntry) {
-                NewEntryView()
-            }
+            .tag(2)
         }
+        .tint(Color(red: 69/255.0, green: 54/255.0, blue: 89/255.0))
     }
     
     private func deleteEntries(offsets: IndexSet) {
@@ -94,22 +124,6 @@ struct HomePageView: View {
             }
         }
     }
-}
-
-#Preview {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: JournalEntry.self, configurations: config)
-    
-    let sampleEntry = JournalEntry(
-        title: "My First Entry",
-        text: "Today was a wonderful day!",
-        date: Date(),
-        sentimentScore: 0.8
-    )
-    container.mainContext.insert(sampleEntry)
-    
-    return HomePageView()
-        .modelContainer(container)
 }
 
 #Preview {
