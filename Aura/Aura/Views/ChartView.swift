@@ -53,15 +53,14 @@ struct ChartView: View {
                                 .fill(sentiment.sentimentColor)
                                 .frame(width: 12, height: 12)
                             
-                            // Format the text with fixed-width numbers
                             Text("\(sentiment.sentimentIcon) \(String(format: "%2d", sentimentCounts[sentiment] ?? 0))")
                                 .font(.system(size: 20, design: .monospaced))
-                                .frame(width: 200, alignment: .leading) // Fixed width for consistent alignment
+                                .frame(width: 200, alignment: .leading)
                         }
                     }
                 }
                 .padding(.top, 25)
-                .padding(.leading, 8) // Add some padding to match your design
+                .padding(.leading, 8)
             }
             .frame(height: 450)
             .padding(12)
