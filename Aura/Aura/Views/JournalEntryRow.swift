@@ -17,7 +17,7 @@ struct JournalEntryRow: View {
                 .font(.system(.headline, design: .serif))
                 .lineLimit(1)
             
-            HStack {
+            HStack (alignment: .center) {
                 Text(entry.formattedDate)
                     .font(.system(.caption, design: .serif))
                     .foregroundStyle(.secondary)
