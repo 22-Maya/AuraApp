@@ -1,9 +1,5 @@
-//
 //  HomePageView.swift
 //  Aura
-//
-//  Created by Student on 6/10/25.
-//
 
 import SwiftUI
 import SwiftData
@@ -101,7 +97,7 @@ struct HomePageView: View {
                 Label("Tips", systemImage: "lightbulb.fill")
             }
         }
-        .accentColor(Color(red: 69/255.0, green: 54/255.0, blue: 89/255.0))
+        .tint(Color(red: 69/255.0, green: 54/255.0, blue: 89/255.0))
     }
     
     private func deleteEntries(offsets: IndexSet) {
