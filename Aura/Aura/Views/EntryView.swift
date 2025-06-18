@@ -13,14 +13,7 @@ struct EntryView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0),
-                    Color(red: 141/255.0, green: 140/255.0, blue: 207/255.0)
-                ]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            Color(red: 141/255.0, green: 140/255.0, blue: 207/255.0)
             .ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: 20) {
@@ -33,6 +26,9 @@ struct EntryView: View {
                         .font(.system(.subheadline, design: .serif))
                         .foregroundStyle(.secondary)
                 }
+                .padding()
+                .background(Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0))
+                .cornerRadius(10)
                 
                 ScrollView {
                     Text(entry.text)
