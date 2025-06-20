@@ -1,9 +1,5 @@
-//
 //  JournalEntry.swift
 //  Aura
-//
-//  Created by Student on 6/10/25.
-//
 
 import Foundation
 import SwiftData
@@ -47,11 +43,11 @@ class JournalEntry {
         var sentimentColor: Color {
             switch self {
                 case .negative:
-                    return .red
-            case .positive:
-                    return .green
+                    return Color(red: 219/255.0, green: 84/255.0, blue: 75/255.0)
+                case .positive:
+                    return Color(red: 100/255.0, green: 160/255.0, blue: 110/255.0)
                 default:
-                    return .gray
+                    return Color(red: 33/255.0, green: 70/255.0, blue: 131/255.0)
             }
         }
     }
