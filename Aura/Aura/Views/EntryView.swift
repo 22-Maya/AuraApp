@@ -16,35 +16,42 @@ struct EntryView: View {
             Color(red: 141/255.0, green: 140/255.0, blue: 207/255.0)
             .ignoresSafeArea()
             
-            VStack(alignment: .leading, spacing: 20) {
-                HStack {
-                    Text(entry.sentimentIcon)
-                        .font(.system(.title3, design: .serif))
-                        .foregroundStyle(entry.sentimentColor)
+            VStack {
+                Text("\(entry.title)")
+                    .multilineTextAlignment(.center)
+                    .font(.system(size: 35, weight: .bold, design: .serif))
+                    .foregroundStyle(Color(red: 49/255.0, green: 39/255.0, blue: 63/255.0))
+                
+                VStack(alignment: .leading, spacing: 20) {
+                    HStack {
+                        Text(entry.sentimentIcon)
+                            .font(.system(.title3, design: .serif))
+                            .foregroundStyle(entry.sentimentColor)
+                        Spacer()
+                        Text(entry.formattedDate)
+                            .font(.system(.subheadline, design: .serif))
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding()
+                    .background(Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0))
+                    .cornerRadius(10)
+                    
+                    ScrollView {
+                        Text(entry.text)
+                            .font(.system(.body, design: .serif))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .padding()
+                    .background(Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0))
+                    .cornerRadius(10)
+                    .shadow(radius: 2)
+                    
                     Spacer()
-                    Text(entry.formattedDate)
-                        .font(.system(.subheadline, design: .serif))
-                        .foregroundStyle(.secondary)
                 }
-                .padding()
-                .background(Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0))
-                .cornerRadius(10)
-                
-                ScrollView {
-                    Text(entry.text)
-                        .font(.system(.body, design: .serif))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .padding()
-                .background(Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0))
-                .cornerRadius(10)
-                .shadow(radius: 2)
-                
-                Spacer()
+                .padding(.bottom)
+                .padding(.horizontal)
+                .navigationBarTitleDisplayMode(.inline)
             }
-            .padding()
-            .navigationTitle("Journal Entry")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
