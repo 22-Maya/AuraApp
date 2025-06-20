@@ -17,7 +17,7 @@ struct NewEntryView: View {
     @State private var text = ""
     @State private var date: Date = Date()
     @State private var showDatePicker = false
-    @State private var sentimentScore: Double?
+    @State private var sentimentScore = 0.0
     private let scorer = Scorer()
     
     init() {
@@ -31,41 +31,47 @@ struct NewEntryView: View {
                     .ignoresSafeArea()
                 
                 ScrollView {
-                    VStack(spacing: 30) {
-                        HStack {
-                            Spacer()
-                            DateSelectorView(selectedDate: $date)
-                        }
-                        .padding(.horizontal)
+                    VStack(alignment: .leading) {
+                        Text("New Entry")
+                            .font(.system(size: 35, weight: .semibold, design: .serif))
+                            .foregroundStyle(Color(red: 49/255.0, green: 39/255.0, blue: 63/255.0))
+                            .padding(.leading, 20)
+                            .padding(.top, 10)
                         
-                        TextField("Enter a title...", text: $title)
-                            .font(.system(.body, design: .serif))
-                            .padding(15)
-                            .background(Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0))
-                            .cornerRadius(10)
-                            .shadow(radius: 2)
+                        VStack(spacing: 20) {
+                            HStack {
+                                Spacer()
+                                DateSelectorView(selectedDate: $date)
+                            }
                             .padding(.horizontal)
-                        
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Journal Entry")
-                                .font(.system(size: 17, design: .serif))
-                                .foregroundColor(Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0))
-                                .padding(.horizontal, 5)
                             
-                            TextEditor(text: $text)
+                            TextField("Enter a title...", text: $title)
                                 .font(.system(.body, design: .serif))
-                                .frame(minHeight: 200)
-                                .padding()
+                                .padding(15)
                                 .background(Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0))
                                 .cornerRadius(10)
                                 .shadow(radius: 2)
+                                .padding(.horizontal)
+                            
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("Journal Entry")
+                                    .font(.system(size: 17, design: .serif))
+                                    .foregroundColor(Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0))
+                                    .padding(.horizontal, 5)
+                                
+                                TextEditor(text: $text)
+                                    .font(.system(.body, design: .serif))
+                                    .frame(minHeight: 200)
+                                    .padding()
+                                    .background(Color(red: 235/255.0, green: 236/255.0, blue: 255/255.0))
+                                    .cornerRadius(10)
+                                    .shadow(radius: 2)
+                            }
+                            .padding(.horizontal)
                         }
-                        .padding(.horizontal)
                     }
-                    .padding(.top)
                 }
             }
-            .navigationTitle("New Entry")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
@@ -91,7 +97,7 @@ struct NewEntryView: View {
             title: title,
             text: text,
             date: date,
-            sentimentScore: score.isFinite ? score : 0.0
+            sentimentScore: score
         )
         
         modelContext.insert(newEntry)
