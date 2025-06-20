@@ -5,10 +5,9 @@ Aura is an iOS mobile app designed to help you better understand and track your 
 ## Features
 
 - **Simple Journaling:** Record your thoughts and feelings in a secure, private space.
-- **Sentiment Analysis:** Each entry is automatically analyzed for sentiment (positive, negative, or neutral) using Apple’s advanced Natural Language framework.
-- **Mood Tracking:** Visualize your mood trends across days, weeks, and months with easy-to-read charts and calendar views.
-- **Privacy First:** Your personal data stays safe and secure on your device, with optional iCloud sync for backups.
-- **Reminders:** Gentle notifications keep you on track with your journaling habit.
+- **Sentiment Analysis:** Each entry is automatically analyzed for sentiment (positive, negative, or balanced) using Apple’s advanced Natural Language framework.
+- **Mood Tracking:** Visualize your mood trends with an easy to read pie chart
+- **Privacy First:** Your personal data stays safe and secure on your device.
 - **Intuitive Design:** A clean, minimal interface focused on your experience.
 
 ## How It Works
@@ -22,16 +21,16 @@ Aura is an iOS mobile app designed to help you better understand and track your 
 
 - **Language:** Swift, SwiftUI
 - **Sentiment Analysis:** Apple Natural Language framework (NLTagger, NLSentimentClassifier)
-- **Data Storage:** Core Data (with optional iCloud integration)
+- **Data Storage:** Swift Data
 
 ## Getting Started
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/aura.git
+   git clone https://github.com/yourusername/AuraApp.git
    ```
 2. **Open in Xcode**
-   - Open `Aura.xcodeproj` in Xcode.
+   - Open `AuraApp.xcodeproj` in Xcode.
 3. **Build & Run**
    - Select your simulator or device and hit run.
 
