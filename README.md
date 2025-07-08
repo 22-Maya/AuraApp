@@ -1,24 +1,57 @@
-# Aura
+# AuraApp 🌈  
+*A minimalist iOS journaling app that blends self-reflection with sentiment analysis to support emotional well-being.*
 
-Aura is an iOS mobile app designed to help you better understand and track your moods through journaling. Harnessing the power of Apple’s Natural Language framework, Aura analyzes the sentiment of your journal entries to provide insights into your emotional well-being over time.
+Aura is designed to help users better understand their mental and emotional patterns. Through intuitive journaling and automatic mood analysis powered by Apple’s Natural Language framework, Aura creates a private space to reflect and grow.
 
-## Features
+---
 
-- **Simple Journaling:** Record your thoughts and feelings in a secure, private space.
-- **Sentiment Analysis:** Each entry is automatically analyzed for sentiment (positive, negative, or balanced) using Apple’s advanced Natural Language framework.
-- **Mood Tracking:** Visualize your mood trends with an easy to read pie chart
-- **Privacy First:** Your personal data stays safe and secure on your device.
-- **Intuitive Design:** A clean, minimal interface focused on your experience.
+## ✨ Features
 
-## How It Works
+- 📝 **Simple Journaling**  
+  Log your thoughts and emotions in a secure, distraction-free space.
 
-1. **Write a Journal Entry:** Open the app and jot down how you’re feeling or anything on your mind.
-2. **Automatic Sentiment Analysis:** Aura uses Apple’s Natural Language framework to determine the tone of your entry.
-3. **Mood Visualization:** Instantly see your mood for the day and track changes over time with built-in analytics.
-4. **Reflect and Grow:** Use insights from your journaling to reflect on patterns and foster emotional growth.
+- 💬 **Sentiment Analysis**  
+  Automatically detects the tone of each journal entry — positive, negative, or neutral — using Apple’s advanced Natural Language framework.
 
-## Technology
+- 📊 **Mood Visualization** *(in progress)*  
+  Planned mood insights and pie chart summaries help users visualize emotional trends over time.
 
-- **Language:** Swift, SwiftUI
-- **Sentiment Analysis:** Apple Natural Language framework (NLTagger, NLSentimentClassifier)
-- **Data Storage:** Swift Data
+- 🔐 **Privacy by Design**  
+  All data stays local to your device, ensuring your entries remain personal and protected.
+
+- 🎨 **Minimalist Design**  
+  Built with SwiftUI, Aura focuses on a calming and intuitive experience, making journaling feel natural and inviting.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Language:** Swift, SwiftUI  
+- **Sentiment Analysis:** Apple Natural Language framework  
+  - `NLTagger`, `NLSentimentClassifier`  
+- **Architecture:** MVVM  
+- **Data Storage:** SwiftData *(planned)*  
+- **Platform:** iOS
+
+---
+
+## 🌿 How It Works
+
+1. **Write a Journal Entry**  
+   Jot down your thoughts or experiences — no character limits, no judgment.
+
+2. **Sentiment Analysis**  
+   Aura instantly analyzes your text using on-device natural language processing to determine its emotional tone.
+
+3. **Mood Reflection** *(upcoming)*  
+   Insights and charts will help users reflect on their emotional state over time.
+
+---
+
+## 🧠 About the Project
+
+AuraApp was developed as part of my journey with **Google Code Next** to create tech that supports personal well-being. As someone passionate about mental health and thoughtful design, I wanted to build a space where users could process emotions and grow in self-awareness.
+
+---
+
+Designed and developed by **Maya Itskovich**
