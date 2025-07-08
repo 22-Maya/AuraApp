@@ -27,10 +27,8 @@ Aura is designed to help users better understand their mental and emotional patt
 ## 🛠️ Tech Stack
 
 - **Language:** Swift, SwiftUI  
-- **Sentiment Analysis:** Apple Natural Language framework  
-  - `NLTagger`, `NLSentimentClassifier`  
-- **Architecture:** MVVM  
-- **Data Storage:** SwiftData *(planned)*  
+- **Sentiment Analysis:** Apple Natural Language framework
+- **Data Storage:** SwiftData 
 - **Platform:** iOS
 
 ---
