@@ -11,7 +11,7 @@ Aura is designed to help users better understand their mental and emotional patt
   Log your thoughts and emotions in a secure, distraction-free space.
 
 - 💬 **Sentiment Analysis**  
-  Automatically detects the tone of each journal entry — positive, negative, or neutral — using Apple’s advanced Natural Language framework.
+  Automatically detects the tone of each journal entry, positive, negative, or neutral, using Apple’s advanced Natural Language framework.
 
 - 📊 **Mood Visualization** *(in progress)*  
   Planned mood insights and pie chart summaries help users visualize emotional trends over time.
